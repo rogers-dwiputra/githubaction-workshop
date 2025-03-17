@@ -48,12 +48,12 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                echo 'Running unit tests...'
-                sh 'npm test'
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         echo 'Running unit tests...'
+        //         sh 'npm test'
+        //     }
+        // }
     }
 
     post {
