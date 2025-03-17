@@ -1,8 +1,8 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18'
-        }
+    agent any
+
+    environment {
+        NODE_VERSION = '18' // Sesuaikan dengan versi Node.js yang digunakan
     }
 
     stages {
@@ -10,6 +10,20 @@ pipeline {
             steps {
                 echo 'Pulling source code from GitHub'
                 checkout scm
+            }
+        }
+
+        stage('Setup Node.js') {
+            steps {
+                script {
+                    def nodeInstalled = sh(script: "node -v || echo 'not found'", returnStdout: true).trim()
+                    if (nodeInstalled == 'not found') {
+                        echo 'Node.js not found, installing...'
+                        sh "curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash -"
+                        sh "apt-get install -y nodejs"
+                    }
+                    sh "node -v"
+                }
             }
         }
 
