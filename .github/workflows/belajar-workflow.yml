@@ -3,10 +3,10 @@ name: Node.js CI
 on:
   push:
     branches:
-      - production-development
+      - production-deployment
   pull_request:
     branches:
-      - main
+      - production-deployment
 
 jobs:
   build:
