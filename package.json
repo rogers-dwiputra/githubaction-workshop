@@ -3,9 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "eslint": "^9.22.0",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+   "babel-cli": "^6.6.5"
+  },
+  "presets": ["@babel/preset-env"]
 }
